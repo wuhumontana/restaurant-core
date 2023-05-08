@@ -58,5 +58,4 @@ public class FoodController {
             return ResponseEntity.ok().build();
         }
     }
-
 }
