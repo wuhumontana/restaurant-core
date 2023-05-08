@@ -39,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/students/**").hasRole("USER")
             .antMatchers("/courses/**").hasRole("USER")
             .antMatchers("/registrars/**").hasRole("USER")
+            .antMatchers("/menu**").hasRole("USER")
+            .antMatchers("/restaurants/**").hasRole("USER")
             .and()
             .userDetailsService(uds)
             .exceptionHandling()
