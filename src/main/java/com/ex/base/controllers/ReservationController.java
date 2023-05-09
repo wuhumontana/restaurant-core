@@ -30,6 +30,7 @@ public class ReservationController {
 
     @PostMapping("/reservation")
     public reservation createReservation(@RequestBody reservation reservationRequest) {
+        System.out.println("---- ReservationController::createReservation");
         Integer customer_id = reservationRequest.getCustomerId();
         Integer restaurant_id = reservationRequest.getRestaurantId();
         Integer table_id = reservationRequest.getTableId();
@@ -40,7 +41,7 @@ public class ReservationController {
         reservationRepository.save(reservations);
         MailUtil.send(userRepo.findById(Long.valueOf(reservationRequest.getCustomerId())).get().getEmail(), 
                 "Reservation-Create", "You have made a reservation successfully!", false);
-        return ResponseEntity.ok(reservations);
+        return reservations;
     }
 
     @PutMapping(value = "/reservation/{id}")
