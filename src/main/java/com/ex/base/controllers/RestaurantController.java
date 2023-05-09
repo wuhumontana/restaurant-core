@@ -37,13 +37,15 @@ public class RestaurantController {
         String description = restaurantRequest.getDescription();
         String mobile = restaurantRequest.getMobile();
         String address = restaurantRequest.getAddress();
+        Integer tablesAvailable = restaurantRequest.getTablesAvailable();
+        Integer tablesAvailableSZ2 = restaurantRequest.getTablesAvailableSZ2();
         String image_url = restaurantRequest.getImage_url();
         Integer hours = restaurantRequest.getHours();
         Integer status = restaurantRequest.getStatus();
 
         restaurant restaurants = new restaurant(name, account, password, description,
-                                                mobile, address, image_url, hours, status);
-        
+                                                mobile, address, tablesAvailable,
+                                                tablesAvailableSZ2, image_url, hours, status);
         return restaurantRepository.save(restaurants);
     }
 
@@ -59,6 +61,8 @@ public class RestaurantController {
             restaurants.setDescription(updatedRestaurant.getDescription());
             restaurants.setMobile(updatedRestaurant.getMobile());
             restaurants.setAddress(updatedRestaurant.getAddress());
+            restaurants.setTablesAvailable(updatedRestaurant.getTablesAvailable());
+            restaurants.setTablesAvailableSZ2(updatedRestaurant.getTablesAvailableSZ2());
             restaurants.setImage_url(updatedRestaurant.getImage_url());
             restaurants.setHours(updatedRestaurant.getHours());
             restaurants.setStatus(updatedRestaurant.getStatus());
