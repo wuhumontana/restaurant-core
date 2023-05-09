@@ -16,6 +16,8 @@ public class restaurant {
     private String description;
     private String mobile;
     private String address;
+    private Integer tablesAvailable;
+    private Integer tablesAvailableSZ2;
     private String image_url;
     private Integer hours;
     private Integer status;
@@ -23,13 +25,16 @@ public class restaurant {
     public restaurant() {}
 
     public restaurant(String name, String account, String password, String description,
-                      String mobile, String address, String image_url, Integer hours, Integer status) {
+                      String mobile, String address, Integer tablesAvailable,
+                      Integer tablesAvailableSZ2, String image_url, Integer hours, Integer status) {
         this.name = name;
         this.account = account;
         this.password = password;
         this.description = description;
         this.mobile = mobile;
         this.address = address;
+        this.tablesAvailable = tablesAvailable;
+        this.tablesAvailableSZ2 = tablesAvailableSZ2;
         this.image_url = image_url;
         this.hours = hours;
         this.status = status;
@@ -49,6 +54,10 @@ public class restaurant {
     public void setMobile(String mobile) { this.mobile = mobile; }
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
+    public Integer getTablesAvailable() { return tablesAvailable; }
+    public void setTablesAvailable(Integer tablesAvailable) { this.tablesAvailable = tablesAvailable; }
+    public Integer getTablesAvailableSZ2() { return tablesAvailableSZ2; }
+    public void setTablesAvailableSZ2(Integer tablesAvailableSZ2) { this.tablesAvailableSZ2 = tablesAvailableSZ2; }
     public String getImage_url() { return image_url; }
     public void setImage_url(String image_url) { this.image_url = image_url; }
     public Integer getHours() { return hours; }

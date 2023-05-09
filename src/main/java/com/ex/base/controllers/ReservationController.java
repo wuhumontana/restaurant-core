@@ -27,9 +27,11 @@ public class ReservationController {
         Integer customer_id = reservationRequest.getCustomerId();
         Integer restaurant_id = reservationRequest.getRestaurantId();
         Integer table_id = reservationRequest.getTableId();
+        Integer table_size = reservationRequest.getTableSize();
+        String date = reservationRequest.getDate();
         Integer scheduled_time = reservationRequest.getScheduledTime();
 
-        reservation reservations = new reservation(customer_id, restaurant_id, table_id, scheduled_time);
+        reservation reservations = new reservation(customer_id, restaurant_id, table_id, table_size, date, scheduled_time);
         return reservationRepository.save(reservations);
     }
 
@@ -42,6 +44,8 @@ public class ReservationController {
             reservations.setCustomerId(updatedReservation.getCustomerId());
             reservations.setRestaurantId(updatedReservation.getRestaurantId());
             reservations.setTableId(updatedReservation.getTableId());
+            reservations.setTableSize(updatedReservation.getTableSize());
+            reservations.setDate(updatedReservation.getDate());
             reservations.setScheduledTime(updatedReservation.getScheduledTime());
             reservationRepository.save(reservations);
             return ResponseEntity.ok(reservations);

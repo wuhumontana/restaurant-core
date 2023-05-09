@@ -13,14 +13,18 @@ public class reservation {
     private Integer customer_id;
     private Integer restaurant_id;
     private Integer table_id;
+    private Integer table_size;
+    private String date;
     private Integer scheduled_time;
 
     public reservation() {}
 
-    public reservation(Integer customer_id, Integer restaurant_id, Integer table_id, Integer scheduled_time) {
+    public reservation(Integer customer_id, Integer restaurant_id, Integer table_id, Integer table_size, String date, Integer scheduled_time) {
         this.customer_id = customer_id;
         this.restaurant_id = restaurant_id;
         this.table_id = table_id;
+        this.table_size = table_size;
+        this.date = date;
         this.scheduled_time = scheduled_time;
     }
 
@@ -47,13 +51,23 @@ public class reservation {
     public void setRestaurantId(Integer restaurant_id) {
         this.restaurant_id = restaurant_id;
     }
-
     public Integer getTableId() {
         return table_id;
     }
-
     public void setTableId(Integer table_id) {
         this.table_id = table_id;
+    }
+    public Integer getTableSize() {
+        return table_size;
+    }
+    public void setTableSize(Integer table_size) {
+        this.table_size = table_size;
+    }
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Integer getScheduledTime() {
