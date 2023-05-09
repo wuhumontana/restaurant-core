@@ -22,8 +22,15 @@ public class RestaurantController {
         }
     }
 
-    @PostMapping("/restaurants")
+    @PostMapping("/restaurant")
     public restaurant createRestaurant(@RequestBody restaurant restaurantRequest) {
+        // Iterable<restaurant> restaurants = restaurantRepository.findAll();
+        // for (restaurant r: restaurants) {
+        //     if (r.getName()==restaurantRequest.getName()) {
+        //         return Exception("AlreadyExistsException");
+        //     }
+        // }
+        // if (restaurantRequest.getName() 
         String name = restaurantRequest.getName();
         String account = restaurantRequest.getAccount();
         String password = restaurantRequest.getPassword();
@@ -36,10 +43,11 @@ public class RestaurantController {
 
         restaurant restaurants = new restaurant(name, account, password, description,
                                                 mobile, address, image_url, hours, status);
+        
         return restaurantRepository.save(restaurants);
     }
 
-    @PutMapping(value = "/updaterestaurant/{id}")
+    @PutMapping(value = "/restaurant/{id}")
     public ResponseEntity updateRestaurant(@PathVariable(value = "id") Long id, @RequestBody restaurant updatedRestaurant) {
         restaurant restaurants = restaurantRepository.findById(id).orElse(null);
         if (restaurants == null) {
@@ -59,7 +67,7 @@ public class RestaurantController {
         }
     }
 
-    @DeleteMapping(value = "/deleterestaurant")
+    @DeleteMapping(value = "/restaurant")
     public ResponseEntity removeRestaurant(@RequestParam(value ="id") Long id) {
         restaurant restaurants = restaurantRepository.findById(id).orElse(null);
         if (restaurants == null) {

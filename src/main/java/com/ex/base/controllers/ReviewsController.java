@@ -12,7 +12,7 @@ public class ReviewsController {
     @Autowired
     private myReviewsRepository reviewRepository;
 
-    @GetMapping(value = "/reviews")
+    @GetMapping(value = "/review")
     public ResponseEntity getReview(@RequestParam(value ="id") Long id) {
         Reviews review = reviewRepository.findById(id).orElse(null);
         if (review == null) {
@@ -22,7 +22,7 @@ public class ReviewsController {
         }
     }
 
-    @PostMapping("/addreview")
+    @PostMapping("/review")
     public Reviews createReview(@RequestBody Reviews reviewRequest) {
         Integer restaurant_id = reviewRequest.getRestaurantId();
         Integer customer_id = reviewRequest.getCustomerId();
@@ -34,7 +34,7 @@ public class ReviewsController {
         return reviewRepository.save(review);
     }
 
-    @PutMapping(value = "/updatereview/{id}")
+    @PutMapping(value = "/review/{id}")
     public ResponseEntity updateReview(@PathVariable(value = "id") Long id, @RequestBody Reviews updatedReview) {
         Reviews review = reviewRepository.findById(id).orElse(null);
         if (review == null) {
@@ -50,7 +50,7 @@ public class ReviewsController {
         }
     }
 
-    @DeleteMapping(value = "/deletereview")
+    @DeleteMapping(value = "/review")
     public ResponseEntity removeReview(@RequestParam(value ="id") Long id) {
         Reviews review = reviewRepository.findById(id).orElse(null);
         if (review == null) {

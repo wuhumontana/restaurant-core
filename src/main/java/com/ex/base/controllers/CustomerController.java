@@ -22,7 +22,7 @@ public class CustomerController {
         }
     }
 
-    @PostMapping("/customers")
+    @PostMapping("/customer")
     public customer createCustomer(@RequestBody customer customerRequest) {
         String username = customerRequest.getUsername();
         String password = customerRequest.getPassword();
@@ -33,7 +33,7 @@ public class CustomerController {
         return customerRepository.save(customers);
     }
 
-    @PutMapping(value = "/updatecustomer/{id}")
+    @PutMapping(value = "/customer/{id}")
     public ResponseEntity updateCustomer(@PathVariable(value = "id") Long id, @RequestBody customer updatedCustomer) {
         customer customers = customerRepository.findById(id).orElse(null);
         if (customers == null) {
@@ -48,7 +48,7 @@ public class CustomerController {
         }
     }
 
-    @DeleteMapping(value = "/deletecustomer")
+    @DeleteMapping(value = "/customer")
     public ResponseEntity removeCustomer(@RequestParam(value ="id") Long id) {
         customer customers = customerRepository.findById(id).orElse(null);
         if (customers == null) {

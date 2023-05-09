@@ -22,7 +22,7 @@ public class ReservationController {
         }
     }
 
-    @PostMapping("/reservations")
+    @PostMapping("/reservation")
     public reservation createReservation(@RequestBody reservation reservationRequest) {
         Integer customer_id = reservationRequest.getCustomerId();
         Integer restaurant_id = reservationRequest.getRestaurantId();
@@ -33,7 +33,7 @@ public class ReservationController {
         return reservationRepository.save(reservations);
     }
 
-    @PutMapping(value = "/updatereservation/{id}")
+    @PutMapping(value = "/reservation/{id}")
     public ResponseEntity updateReservation(@PathVariable(value = "id") Long id, @RequestBody reservation updatedReservation) {
         reservation reservations = reservationRepository.findById(id).orElse(null);
         if (reservations == null) {
@@ -48,7 +48,7 @@ public class ReservationController {
         }
     }
 
-    @DeleteMapping(value = "/deletereservation")
+    @DeleteMapping(value = "/reservation")
     public ResponseEntity removeReservation(@RequestParam(value ="id") Long id) {
         reservation reservations = reservationRepository.findById(id).orElse(null);
         if (reservations == null) {

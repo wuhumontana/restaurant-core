@@ -22,7 +22,7 @@ public class SeatingController {
         }
     }
 
-    @PostMapping("/tabless")
+    @PostMapping("/table")
     public seating createTable(@RequestBody seating seatingRequest) {
         Integer restaurant_id = seatingRequest.getRestaurantId();
         Integer table_number = seatingRequest.getTableNumber();
@@ -34,7 +34,7 @@ public class SeatingController {
         return seatingRepository.save(tables);
     }
 
-    @PutMapping(value = "/updatetable/{id}")
+    @PutMapping(value = "/table/{id}")
     public ResponseEntity updateTable(@PathVariable(value = "id") Long id, @RequestBody seating updatedSeating) {
         seating tables = seatingRepository.findById(id).orElse(null);
         if (tables == null) {
@@ -50,7 +50,7 @@ public class SeatingController {
         }
     }
 
-    @DeleteMapping(value = "/deletetable")
+    @DeleteMapping(value = "/table")
     public ResponseEntity removeTable(@RequestParam(value ="id") Long id) {
         seating tables = seatingRepository.findById(id).orElse(null);
         if (tables == null) {

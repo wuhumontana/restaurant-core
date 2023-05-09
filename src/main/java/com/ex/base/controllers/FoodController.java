@@ -22,7 +22,7 @@ public class FoodController {
         }
     }
 
-    @PostMapping("/menus")
+    @PostMapping("/menu")
     public food createMenu(@RequestBody food menuRequest) {
         String name = menuRequest.getName();
         Integer type = menuRequest.getType();
@@ -33,7 +33,7 @@ public class FoodController {
         return foodRepository.save(menu);
     }
 
-    @PutMapping(value = "/updatemenu/{id}")
+    @PutMapping(value = "/menu/{id}")
     public ResponseEntity updateMenu(@PathVariable(value = "id") Long id, @RequestBody food updatedFood) {
         food menu = foodRepository.findById(id).orElse(null);
         if (menu == null) {
@@ -48,7 +48,7 @@ public class FoodController {
         }
     }
 
-    @DeleteMapping(value = "/deletemenuitem")
+    @DeleteMapping(value = "/menu")
     public ResponseEntity removeMenu(@RequestParam(value ="id") Long id) {
         food menu = foodRepository.findById(id).orElse(null);
         if (menu == null) {
