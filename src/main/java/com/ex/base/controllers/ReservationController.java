@@ -29,7 +29,7 @@ public class ReservationController {
     }
 
     @PostMapping("/reservation")
-    public reservation createReservation(@RequestBody reservation reservationRequest) {
+    public ResponseEntity<reservation> createReservation(@RequestBody reservation reservationRequest) {
         Integer customer_id = reservationRequest.getCustomerId();
         Integer restaurant_id = reservationRequest.getRestaurantId();
         Integer table_id = reservationRequest.getTableId();
