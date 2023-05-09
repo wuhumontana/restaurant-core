@@ -38,10 +38,10 @@ public class ReservationController {
         String date = reservationRequest.getDate();
         Integer scheduled_time = reservationRequest.getScheduledTime();
         reservation reservations = new reservation(customer_id, restaurant_id, table_id, table_size, date, scheduled_time);
-        reservationRepository.save(reservations);
-        MailUtil.send(userRepo.findById(Long.valueOf(reservationRequest.getCustomerId())).get().getEmail(), 
-                "Reservation-Create", "You have made a reservation successfully!", false);
-        return reservations;
+        return reservationRepository.save(reservations);
+//        MailUtil.send(userRepo.findById(Long.valueOf(reservationRequest.getCustomerId())).get().getEmail(),
+//                "Reservation-Create", "You have made a reservation successfully!", false);
+//        return reservations;
     }
 
     @PutMapping(value = "/reservation/{id}")
