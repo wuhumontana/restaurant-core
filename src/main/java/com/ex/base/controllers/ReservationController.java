@@ -1,6 +1,6 @@
 package com.ex.base.controllers;
 
-import com.ex.base.entity.reservation;
+import com.ex.base.entity.Reservation;
 import com.ex.base.jpa.ApiUserRepository;
 import com.ex.base.jpa.myReservationRepository;
 
@@ -20,7 +20,7 @@ public class ReservationController {
 
     @GetMapping(value = "/reservation")
     public ResponseEntity getReservation(@RequestParam(value ="id") Long id) {
-        reservation reservationns = reservationRepository.findById(id).orElse(null);
+        Reservation reservationns = reservationRepository.findById(id).orElse(null);
         if (reservationns == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -29,7 +29,7 @@ public class ReservationController {
     }
 
     @PostMapping("/reservation")
-    public reservation createReservation(@RequestBody reservation reservationRequest) {
+    public Reservation createReservation(@RequestBody Reservation reservationRequest) {
         System.out.println("---- ReservationController::createReservation");
         Integer customer_id = reservationRequest.getCustomerId();
         Integer restaurant_id = reservationRequest.getRestaurantId();
@@ -37,7 +37,7 @@ public class ReservationController {
         Integer table_size = reservationRequest.getTableSize();
         String date = reservationRequest.getDate();
         Integer scheduled_time = reservationRequest.getScheduledTime();
-        reservation reservations = new reservation(customer_id, restaurant_id, table_id, table_size, date, scheduled_time);
+        Reservation reservations = new Reservation(customer_id, restaurant_id, table_id, table_size, date, scheduled_time);
         reservationRepository.save(reservations);
         MailUtil.send(userRepo.findById(Long.valueOf(reservationRequest.getCustomerId())).get().getEmail(), 
                 "Reservation-Create", "You have made a reservation successfully!", false);
@@ -45,8 +45,8 @@ public class ReservationController {
     }
 
     @PutMapping(value = "/reservation/{id}")
-    public ResponseEntity updateReservation(@PathVariable(value = "id") Long id, @RequestBody reservation updatedReservation) {
-        reservation reservations = reservationRepository.findById(id).orElse(null);
+    public ResponseEntity updateReservation(@PathVariable(value = "id") Long id, @RequestBody Reservation updatedReservation) {
+        Reservation reservations = reservationRepository.findById(id).orElse(null);
         if (reservations == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -65,7 +65,7 @@ public class ReservationController {
 
     @DeleteMapping(value = "/reservation")
     public ResponseEntity removeReservation(@RequestParam(value ="id") Long id) {
-        reservation reservations = reservationRepository.findById(id).orElse(null);
+        Reservation reservations = reservationRepository.findById(id).orElse(null);
         if (reservations == null) {
             return ResponseEntity.notFound().build();
         } else {

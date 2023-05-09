@@ -1,7 +1,7 @@
 package com.ex.base.jpa;
 
-import com.ex.base.entity.seating;
+import com.ex.base.entity.Seating;
 import org.springframework.data.repository.CrudRepository;
 
-public interface mySeatingRepository extends CrudRepository<seating, Long> {
+public interface mySeatingRepository extends CrudRepository<Seating, Long> {
 }

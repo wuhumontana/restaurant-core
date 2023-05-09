@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class seating {
+public class Seating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,9 +17,9 @@ public class seating {
     private Integer status;
 
 
-    public seating() {}
+    public Seating() {}
 
-    public seating(Integer restaurant_id, Integer table_number, Integer table_size, Integer capacity, Integer status) {
+    public Seating(Integer restaurant_id, Integer table_number, Integer table_size, Integer capacity, Integer status) {
         this.restaurant_id = restaurant_id;
         this.table_number = table_number;
         this.table_size = table_size;

@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class food {
+public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,9 +15,9 @@ public class food {
     private Integer price;
     private Integer status;
 
-    public food() {}
+    public Food() {}
 
-    public food(String name, Integer type, Integer price, Integer status) {
+    public Food(String name, Integer type, Integer price, Integer status) {
         this.name = name;
         this.type = type;
         this.price = price;

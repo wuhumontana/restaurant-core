@@ -1,6 +1,6 @@
 package com.ex.base.controllers;
 
-import com.ex.base.entity.food;
+import com.ex.base.entity.Food;
 import com.ex.base.jpa.myFoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ public class FoodController {
 
     @GetMapping(value = "/menu")
     public ResponseEntity getFood(@RequestParam(value ="id") Long id) {
-        food foodd = foodRepository.findById(id).orElse(null);
+        Food foodd = foodRepository.findById(id).orElse(null);
         if (foodd == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -23,19 +23,19 @@ public class FoodController {
     }
 
     @PostMapping("/menu")
-    public food createMenu(@RequestBody food menuRequest) {
+    public Food createMenu(@RequestBody Food menuRequest) {
         String name = menuRequest.getName();
         Integer type = menuRequest.getType();
         Integer price = menuRequest.getPrice();
         Integer status = menuRequest.getStatus();
 
-        food menu = new food(name, type, price, status);
+        Food menu = new Food(name, type, price, status);
         return foodRepository.save(menu);
     }
 
     @PutMapping(value = "/menu/{id}")
-    public ResponseEntity updateMenu(@PathVariable(value = "id") Long id, @RequestBody food updatedFood) {
-        food menu = foodRepository.findById(id).orElse(null);
+    public ResponseEntity updateMenu(@PathVariable(value = "id") Long id, @RequestBody Food updatedFood) {
+        Food menu = foodRepository.findById(id).orElse(null);
         if (menu == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -50,7 +50,7 @@ public class FoodController {
 
     @DeleteMapping(value = "/menu")
     public ResponseEntity removeMenu(@RequestParam(value ="id") Long id) {
-        food menu = foodRepository.findById(id).orElse(null);
+        Food menu = foodRepository.findById(id).orElse(null);
         if (menu == null) {
             return ResponseEntity.notFound().build();
         } else {

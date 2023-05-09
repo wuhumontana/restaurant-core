@@ -1,7 +1,7 @@
 package com.ex.base.jpa;
 
-import com.ex.base.entity.restaurant;
+import com.ex.base.entity.Restaurant;
 import org.springframework.data.repository.CrudRepository;
 
-public interface myRestaurantRepository extends CrudRepository<restaurant, Long> {
+public interface myRestaurantRepository extends CrudRepository<Restaurant, Long> {
 }

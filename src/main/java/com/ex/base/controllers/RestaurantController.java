@@ -1,6 +1,6 @@
 package com.ex.base.controllers;
 
-import com.ex.base.entity.restaurant;
+import com.ex.base.entity.Restaurant;
 import com.ex.base.jpa.myRestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ public class RestaurantController {
 
     @GetMapping(value = "/restaurant")
     public ResponseEntity getRestaurant(@RequestParam(value ="id") Long id) {
-        restaurant restaurantd = restaurantRepository.findById(id).orElse(null);
+        Restaurant restaurantd = restaurantRepository.findById(id).orElse(null);
         if (restaurantd == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -23,7 +23,7 @@ public class RestaurantController {
     }
 
     @PostMapping("/restaurant")
-    public restaurant createRestaurant(@RequestBody restaurant restaurantRequest) {
+    public Restaurant createRestaurant(@RequestBody Restaurant restaurantRequest) {
         // Iterable<restaurant> restaurants = restaurantRepository.findAll();
         // for (restaurant r: restaurants) {
         //     if (r.getName()==restaurantRequest.getName()) {
@@ -43,15 +43,15 @@ public class RestaurantController {
         Integer hours = restaurantRequest.getHours();
         Integer status = restaurantRequest.getStatus();
 
-        restaurant restaurants = new restaurant(name, account, password, description,
+        Restaurant restaurants = new Restaurant(name, account, password, description,
                                                 mobile, address, tablesAvailable,
                                                 tablesAvailableSZ2, image_url, hours, status);
         return restaurantRepository.save(restaurants);
     }
 
     @PutMapping(value = "/restaurant/{id}")
-    public ResponseEntity updateRestaurant(@PathVariable(value = "id") Long id, @RequestBody restaurant updatedRestaurant) {
-        restaurant restaurants = restaurantRepository.findById(id).orElse(null);
+    public ResponseEntity updateRestaurant(@PathVariable(value = "id") Long id, @RequestBody Restaurant updatedRestaurant) {
+        Restaurant restaurants = restaurantRepository.findById(id).orElse(null);
         if (restaurants == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -73,7 +73,7 @@ public class RestaurantController {
 
     @DeleteMapping(value = "/restaurant")
     public ResponseEntity removeRestaurant(@RequestParam(value ="id") Long id) {
-        restaurant restaurants = restaurantRepository.findById(id).orElse(null);
+        Restaurant restaurants = restaurantRepository.findById(id).orElse(null);
         if (restaurants == null) {
             return ResponseEntity.notFound().build();
         } else {
