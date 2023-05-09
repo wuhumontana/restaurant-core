@@ -2,6 +2,10 @@ package com.ex.base.controllers;
 
 import com.ex.base.entity.Reviews;
 import com.ex.base.jpa.ReviewsRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +15,13 @@ public class ReviewsController {
 
     @Autowired
     private ReviewsRepository reviewRepository;
+
+    @GetMapping(value = "/reviews")
+    public ResponseEntity getReviews() {
+        List<Reviews> total = new ArrayList<Reviews>();
+        reviewRepository.findAll().forEach(total::add);
+        return ResponseEntity.ok(total);
+    }
 
     @GetMapping(value = "/review")
     public ResponseEntity getReview(@RequestParam(value ="id") Long id) {
