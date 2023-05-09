@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @lombok.ToString
 @Entity
-public class restaurant {
+public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,9 +23,9 @@ public class restaurant {
     private Integer hours;
     private Integer status;
 
-    public restaurant() {}
+    public Restaurant() {}
 
-    public restaurant(String name, String account, String password, String description,
+    public Restaurant(String name, String account, String password, String description,
                       String mobile, String address, Integer tablesAvailable,
                       Integer tablesAvailableSZ2, String image_url, Integer hours, Integer status) {
         this.name = name;

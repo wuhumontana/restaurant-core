@@ -1,6 +1,6 @@
 package com.ex.base.controllers;
 
-import com.ex.base.entity.customer;
+import com.ex.base.entity.Customer;
 import com.ex.base.jpa.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ public class CustomerController {
 
     @GetMapping(value = "/customer")
     public ResponseEntity getCustomer(@RequestParam(value ="id") Long id) {
-        customer customerr = customerRepository.findById(id).orElse(null);
+        Customer customerr = customerRepository.findById(id).orElse(null);
         if (customerr == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -23,19 +23,19 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-    public customer createCustomer(@RequestBody customer customerRequest) {
+    public Customer createCustomer(@RequestBody Customer customerRequest) {
         String username = customerRequest.getUsername();
         String password = customerRequest.getPassword();
         String email = customerRequest.getEmail();
         String phone = customerRequest.getPhone();
 
-        customer customers = new customer(username, password, email, phone);
+        Customer customers = new Customer(username, password, email, phone);
         return customerRepository.save(customers);
     }
 
     @PutMapping(value = "/customer/{id}")
-    public ResponseEntity updateCustomer(@PathVariable(value = "id") Long id, @RequestBody customer updatedCustomer) {
-        customer customers = customerRepository.findById(id).orElse(null);
+    public ResponseEntity updateCustomer(@PathVariable(value = "id") Long id, @RequestBody Customer updatedCustomer) {
+        Customer customers = customerRepository.findById(id).orElse(null);
         if (customers == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -50,7 +50,7 @@ public class CustomerController {
 
     @DeleteMapping(value = "/customer")
     public ResponseEntity removeCustomer(@RequestParam(value ="id") Long id) {
-        customer customers = customerRepository.findById(id).orElse(null);
+        Customer customers = customerRepository.findById(id).orElse(null);
         if (customers == null) {
             return ResponseEntity.notFound().build();
         } else {
