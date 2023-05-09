@@ -2,7 +2,7 @@ package com.ex.base.controllers;
 
 import com.ex.base.entity.Reservation;
 import com.ex.base.jpa.ApiUserRepository;
-import com.ex.base.jpa.myReservationRepository;
+import com.ex.base.jpa.ReservationRepository;
 
 import cn.hutool.extra.mail.MailUtil;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class ReservationController {
 
     @Autowired
-    private myReservationRepository reservationRepository;
+    private ReservationRepository reservationRepository;
     @Autowired 
     private ApiUserRepository userRepo;
 

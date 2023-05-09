@@ -1,7 +1,7 @@
 package com.ex.base.controllers;
 
 import com.ex.base.entity.Restaurant;
-import com.ex.base.jpa.myRestaurantRepository;
+import com.ex.base.jpa.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class RestaurantController {
 
     @Autowired
-    private myRestaurantRepository restaurantRepository;
+    private RestaurantRepository restaurantRepository;
 
     @GetMapping(value = "/restaurant")
     public ResponseEntity getRestaurant(@RequestParam(value ="id") Long id) {

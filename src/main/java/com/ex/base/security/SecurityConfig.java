@@ -13,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.ex.base.jpa.ApiUserRepository;
-import com.ex.base.jpa.StudentRepository;
 
 import javax.servlet.http.HttpServletResponse;
 

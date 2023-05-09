@@ -1,7 +1,7 @@
 package com.ex.base.controllers;
 
 import com.ex.base.entity.Seating;
-import com.ex.base.jpa.mySeatingRepository;
+import com.ex.base.jpa.SeatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class SeatingController {
 
     @Autowired
-    private mySeatingRepository seatingRepository;
+    private SeatingRepository seatingRepository;
 
     @GetMapping(value = "/table")
     public ResponseEntity getTable(@RequestParam(value ="id") Long id) {
