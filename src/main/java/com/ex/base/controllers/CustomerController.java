@@ -1,7 +1,7 @@
 package com.ex.base.controllers;
 
 import com.ex.base.entity.customer;
-import com.ex.base.jpa.myCustomerRepository;
+import com.ex.base.jpa.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
     @Autowired
-    private myCustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @GetMapping(value = "/customer")
     public ResponseEntity getCustomer(@RequestParam(value ="id") Long id) {

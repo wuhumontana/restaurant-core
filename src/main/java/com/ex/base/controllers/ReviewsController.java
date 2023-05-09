@@ -1,7 +1,7 @@
 package com.ex.base.controllers;
 
 import com.ex.base.entity.Reviews;
-import com.ex.base.jpa.myReviewsRepository;
+import com.ex.base.jpa.ReviewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class ReviewsController {
 
     @Autowired
-    private myReviewsRepository reviewRepository;
+    private ReviewsRepository reviewRepository;
 
     @GetMapping(value = "/review")
     public ResponseEntity getReview(@RequestParam(value ="id") Long id) {

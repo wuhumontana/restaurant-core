@@ -1,7 +1,7 @@
 package com.ex.base.controllers;
 
 import com.ex.base.entity.food;
-import com.ex.base.jpa.myFoodRepository;
+import com.ex.base.jpa.FoodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class FoodController {
 
     @Autowired
-    private myFoodRepository foodRepository;
+    private FoodRepository foodRepository;
 
     @GetMapping(value = "/menu")
     public ResponseEntity getFood(@RequestParam(value ="id") Long id) {
