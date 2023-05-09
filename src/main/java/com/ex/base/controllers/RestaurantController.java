@@ -2,6 +2,10 @@ package com.ex.base.controllers;
 
 import com.ex.base.entity.Restaurant;
 import com.ex.base.jpa.RestaurantRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +15,14 @@ public class RestaurantController {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
+
+
+    @GetMapping(value = "/restaurants")
+    public ResponseEntity<List<Restaurant>> getRestaurants() {
+        List<Restaurant> total = new ArrayList<Restaurant>();
+        restaurantRepository.findAll().forEach(total::add);
+        return ResponseEntity.ok(total);
+    }
 
     @GetMapping(value = "/restaurant")
     public ResponseEntity getRestaurant(@RequestParam(value ="id") Long id) {
