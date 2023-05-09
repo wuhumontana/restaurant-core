@@ -56,10 +56,11 @@ public class ReservationController {
             reservations.setTableSize(updatedReservation.getTableSize());
             reservations.setDate(updatedReservation.getDate());
             reservations.setScheduledTime(updatedReservation.getScheduledTime());
-            reservationRepository.save(reservations);
-            MailUtil.send(userRepo.findById(Long.valueOf(updatedReservation.getCustomerId())).get().getEmail(), 
-                    "Reservation-Update", "Your reservation was updated successfully!", false);
-            return ResponseEntity.ok(reservations);
+            reservation result = reservationRepository.save(reservations);
+            return ResponseEntity.ok(result);
+            // MailUtil.send(userRepo.findById(Long.valueOf(updatedReservation.getCustomerId())).get().getEmail(), 
+            //         "Reservation-Update", "Your reservation was updated successfully!", false);
+            // return ResponseEntity.ok(reservations);
         }
     }
 
