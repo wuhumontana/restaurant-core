@@ -3,6 +3,8 @@ package com.ex.base.controllers;
 import com.ex.base.entity.Restaurant;
 import com.ex.base.jpa.RestaurantRepository;
 
+import io.swagger.annotations.Api;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Api(value="/restaurant", description="Restaurant endpoints")
 @RestController
 public class RestaurantController {
 

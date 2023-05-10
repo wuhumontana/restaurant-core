@@ -2,10 +2,14 @@ package com.ex.base.controllers;
 
 import com.ex.base.entity.seating;
 import com.ex.base.jpa.SeatingRepository;
+
+import io.swagger.annotations.Api;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Api(value="/seating", description="Table endpoints")
 @RestController
 public class SeatingController {
 

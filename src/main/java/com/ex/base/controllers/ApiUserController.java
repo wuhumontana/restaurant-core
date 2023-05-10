@@ -3,6 +3,9 @@ package com.ex.base.controllers;
 import com.ex.base.entity.User;
 import com.ex.base.jpa.ApiUserRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@Tag(name="/api/user", description="API User endpoints")
 @RequestMapping("/api/user")
 public class ApiUserController {
 

@@ -4,6 +4,9 @@ import com.ex.base.entity.User;
 import com.ex.base.jpa.ApiUserCredentials;
 import com.ex.base.jpa.ApiUserRepository;
 import com.ex.base.security.JWTUtility;
+
+import io.swagger.annotations.Api;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 import java.util.Map;
 
+@Api(value="/api/auth", description="API Authentication endpoints")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

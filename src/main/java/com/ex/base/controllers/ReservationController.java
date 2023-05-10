@@ -5,6 +5,7 @@ import com.ex.base.jpa.ApiUserRepository;
 import com.ex.base.jpa.ReservationRepository;
 
 import cn.hutool.extra.mail.MailUtil;
+import io.swagger.annotations.Api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Api(value="/reservation", description="Reservation endpoints")
 @RestController
 public class ReservationController {
 

@@ -5,17 +5,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@lombok.ToString
+import io.swagger.annotations.ApiModelProperty;
+
+@lombok.Data
+
 @Entity
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @ApiModelProperty(notes = "Reservation ID", example = "12312312", required = true) 
     private Long id;
+
+    @ApiModelProperty(notes = "Customer ID", example = "12312312", required = true) 
     private Integer customer_id;
+
+    @ApiModelProperty(notes = "Restaurant ID", example = "12312312", required = true) 
     private Integer restaurant_id;
+
+    @ApiModelProperty(notes = "Table ID", example = "12312312", required = true) 
     private Integer table_id;
+
+    @ApiModelProperty(notes = "Table size", example = "12312312", required = true) 
     private Integer table_size;
+
+    @ApiModelProperty(notes = "Date of Reservation", example = "11-15-2023", required = true) 
     private String date;
+
+    @ApiModelProperty(notes = "Time of Reservation (hour of day)", example = "12", required = true) 
     private Integer scheduled_time;
 
     public Reservation() {}
@@ -29,54 +46,5 @@ public class Reservation {
         this.scheduled_time = scheduled_time;
     }
 
-    public Long getID() {
-        return id;
-    }
-
-    public void setID(Long id) {
-        this.id = id;
-    }
-
-    public Integer getCustomerId() {
-        return customer_id;
-    }
-
-    public void setCustomerId(Integer customer_id) {
-        this.customer_id = customer_id;
-    }
-
-    public Integer getRestaurantId() {
-        return restaurant_id;
-    }
-
-    public void setRestaurantId(Integer restaurant_id) {
-        this.restaurant_id = restaurant_id;
-    }
-    public Integer getTableId() {
-        return table_id;
-    }
-    public void setTableId(Integer table_id) {
-        this.table_id = table_id;
-    }
-    public Integer getTableSize() {
-        return table_size;
-    }
-    public void setTableSize(Integer table_size) {
-        this.table_size = table_size;
-    }
-    public String getDate() {
-        return date;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public Integer getScheduledTime() {
-        return scheduled_time;
-    }
-
-    public void setScheduledTime(Integer scheduled_time) {
-        this.scheduled_time = scheduled_time;
-    }
 
 }

@@ -2,10 +2,14 @@ package com.ex.base.controllers;
 
 import com.ex.base.entity.food;
 import com.ex.base.jpa.FoodRepository;
+
+import io.swagger.annotations.Api;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Api(value="/menu", description="Menu endpoints")
 @RestController
 public class FoodController {
 

@@ -2,10 +2,14 @@ package com.ex.base.controllers;
 
 import com.ex.base.entity.Customer;
 import com.ex.base.jpa.CustomerRepository;
+
+import io.swagger.annotations.Api;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Api(value="/customer", description="Customer endpoint")
 @RestController
 public class CustomerController {
 
