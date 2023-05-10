@@ -5,64 +5,48 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@lombok.ToString
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@lombok.Data
+@ApiModel(description = "Restaurant data model")
 @Entity
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "Restaurant ID", example = "12312312", required = true) 
     private Long id;
+
+    @ApiModelProperty(notes = "Restaurant name", example = "Not DiGiorno's Pizza", required = true) 
     private String name;
+
+    @ApiModelProperty(notes = "Account", example = "adminNDPizza", required = true) 
     private String account;
+
+    @ApiModelProperty(notes = "Password", example = "adminPassword", required = true) 
     private String password;
+
+    @ApiModelProperty(notes = "Description", example = "Restaurant description", required = true) 
     private String description;
+
+    @ApiModelProperty(notes = "Mobile", example = "4443337777", required = true) 
     private String mobile;
+
+    @ApiModelProperty(notes = "Address", example = "1111 One Way Rd", required = true) 
     private String address;
+
+    @ApiModelProperty(notes = "# of available tables of size option 1", example = "6", required = true) 
     private Integer tablesAvailable;
+
+    @ApiModelProperty(notes = "Available tables of size option 2", example = "2", required = true) 
     private Integer tablesAvailableSZ2;
+
+    @ApiModelProperty(notes = "Image URL", example = "https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png", required = true) 
     private String image_url;
+
+    @ApiModelProperty(notes = "Hours", example = "12", required = true) 
     private Integer hours;
+
+    @ApiModelProperty(notes = "Restaurant status", example = "1", required = true) 
     private Integer status;
-
-    public Restaurant() {}
-
-    public Restaurant(String name, String account, String password, String description,
-                      String mobile, String address, Integer tablesAvailable,
-                      Integer tablesAvailableSZ2, String image_url, Integer hours, Integer status) {
-        this.name = name;
-        this.account = account;
-        this.password = password;
-        this.description = description;
-        this.mobile = mobile;
-        this.address = address;
-        this.tablesAvailable = tablesAvailable;
-        this.tablesAvailableSZ2 = tablesAvailableSZ2;
-        this.image_url = image_url;
-        this.hours = hours;
-        this.status = status;
-    }
-
-    public Long getID() { return id; }
-    public void setID(Long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getAccount() { return account; }
-    public void setAccount(String account) { this.account = account; }
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-    public String getMobile() { return mobile; }
-    public void setMobile(String mobile) { this.mobile = mobile; }
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
-    public Integer getTablesAvailable() { return tablesAvailable; }
-    public void setTablesAvailable(Integer tablesAvailable) { this.tablesAvailable = tablesAvailable; }
-    public Integer getTablesAvailableSZ2() { return tablesAvailableSZ2; }
-    public void setTablesAvailableSZ2(Integer tablesAvailableSZ2) { this.tablesAvailableSZ2 = tablesAvailableSZ2; }
-    public String getImage_url() { return image_url; }
-    public void setImage_url(String image_url) { this.image_url = image_url; }
-    public Integer getHours() { return hours; }
-    public void setHours(Integer hours) { this.hours = hours; }
-    public Integer getStatus() { return status; }
-    public void setStatus(Integer status) { this.status = status; }
 }

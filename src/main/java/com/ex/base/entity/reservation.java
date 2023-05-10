@@ -5,10 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @lombok.Data
-
+@ApiModel(description = "Reservation data model")
 @Entity
 public class Reservation {
     @Id
@@ -34,17 +35,4 @@ public class Reservation {
 
     @ApiModelProperty(notes = "Time of Reservation (hour of day)", example = "12", required = true) 
     private Integer scheduled_time;
-
-    public Reservation() {}
-
-    public Reservation(Integer customer_id, Integer restaurant_id, Integer table_id, Integer table_size, String date, Integer scheduled_time) {
-        this.customer_id = customer_id;
-        this.restaurant_id = restaurant_id;
-        this.table_id = table_id;
-        this.table_size = table_size;
-        this.date = date;
-        this.scheduled_time = scheduled_time;
-    }
-
-
 }
