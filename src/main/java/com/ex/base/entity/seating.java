@@ -5,76 +5,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@lombok.ToString
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
+@ApiModel(description = "Seating data model")
+@Data
 @Entity
 public class seating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "Seating ID", example = "1", required = true)
     private Long id;
+    @ApiModelProperty(notes = "Restaurant ID", example = "1", required = true)
     private Integer restaurant_id;
+    @ApiModelProperty(notes = "Table Number", example = "1", required = true)
     private Integer table_number;
+    @ApiModelProperty(notes = "Table Size", example = "1", required = true)
     private Integer table_size;
+    @ApiModelProperty(notes = "Capacity", example = "4", required = true)
     private Integer capacity;
+    @ApiModelProperty(notes = "Status", example = "1", required = true)
     private Integer status;
-
-
-    public seating() {}
-
-    public seating(Integer restaurant_id, Integer table_number, Integer table_size, Integer capacity, Integer status) {
-        this.restaurant_id = restaurant_id;
-        this.table_number = table_number;
-        this.table_size = table_size;
-        this.capacity = capacity;
-        this.status = status;
-    }
-
-    public Long getID() {
-        return id;
-    }
-
-    public void setID(Long id) {
-        this.id = id;
-    }
-
-    public Integer getRestaurantId() {
-        return restaurant_id;
-    }
-
-    public void setRestaurantId(Integer restaurant_id) {
-        this.restaurant_id = restaurant_id;
-    }
-
-    public Integer getTableNumber() {
-        return table_number;
-    }
-
-    public void setTableNumber(Integer table_number) {
-        this.table_number = table_number;
-    }
-
-    public Integer getTableSize() {
-        return table_size;
-    }
-
-    public void setTableSize(Integer table_size) {
-        this.table_size = table_size;
-    }
-
-    public Integer getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
 }
