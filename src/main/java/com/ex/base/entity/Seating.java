@@ -12,7 +12,7 @@ import lombok.Data;
 @ApiModel(description = "Seating data model")
 @Data
 @Entity
-public class seating {
+public class Seating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "Seating ID", example = "1", required = true)

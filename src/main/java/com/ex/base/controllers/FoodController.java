@@ -1,6 +1,6 @@
 package com.ex.base.controllers;
 
-import com.ex.base.entity.food;
+import com.ex.base.entity.Food;
 import com.ex.base.jpa.FoodRepository;
 
 import io.swagger.annotations.Api;
@@ -18,7 +18,7 @@ public class FoodController {
 
     @GetMapping(value = "/menu")
     public ResponseEntity getFood(@RequestParam(value ="id") Long id) {
-        food foodd = foodRepository.findById(id).orElse(null);
+        Food foodd = foodRepository.findById(id).orElse(null);
         if (foodd == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -27,19 +27,19 @@ public class FoodController {
     }
 
     @PostMapping("/menu")
-    public food createMenu(@RequestBody food menuRequest) {
-        String name = menuRequest.getName();
-        Integer type = menuRequest.getType();
-        Integer price = menuRequest.getPrice();
-        Integer status = menuRequest.getStatus();
+    public Food createMenu(@RequestBody Food menuRequest) {
+        Food menu = new Food();
+        menu.setName(menuRequest.getName());
+        menu.setType(menuRequest.getType());
+        menu.setPrice(menuRequest.getPrice());
+        menu.setStatus(menuRequest.getStatus());
 
-        food menu = new food(name, type, price, status);
         return foodRepository.save(menu);
     }
 
     @PutMapping(value = "/menu/{id}")
-    public ResponseEntity updateMenu(@PathVariable(value = "id") Long id, @RequestBody food updatedFood) {
-        food menu = foodRepository.findById(id).orElse(null);
+    public ResponseEntity updateMenu(@PathVariable(value = "id") Long id, @RequestBody Food updatedFood) {
+        Food menu = foodRepository.findById(id).orElse(null);
         if (menu == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -54,7 +54,7 @@ public class FoodController {
 
     @DeleteMapping(value = "/menu")
     public ResponseEntity removeMenu(@RequestParam(value ="id") Long id) {
-        food menu = foodRepository.findById(id).orElse(null);
+        Food menu = foodRepository.findById(id).orElse(null);
         if (menu == null) {
             return ResponseEntity.notFound().build();
         } else {

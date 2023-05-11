@@ -1,6 +1,6 @@
 package com.ex.base.controllers;
 
-import com.ex.base.entity.seating;
+import com.ex.base.entity.Seating;
 import com.ex.base.jpa.SeatingRepository;
 
 import io.swagger.annotations.Api;
@@ -18,7 +18,7 @@ public class SeatingController {
 
     @GetMapping(value = "/table")
     public ResponseEntity getTable(@RequestParam(value ="id") Long id) {
-        seating tables = seatingRepository.findById(id).orElse(null);
+        Seating tables = seatingRepository.findById(id).orElse(null);
         if (tables == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -27,26 +27,32 @@ public class SeatingController {
     }
 
     @PostMapping("/table")
-    public seating createTable(@RequestBody seating seatingRequest) {
-        Integer restaurant_id = seatingRequest.getRestaurantId();
-        Integer table_number = seatingRequest.getTableNumber();
-        Integer table_size = seatingRequest.getTableSize();
+    public Seating createTable(@RequestBody Seating seatingRequest) {
+        Integer restaurant_id = seatingRequest.getRestaurant_id();
+        Integer table_number = seatingRequest.getTable_number();
+        Integer table_size = seatingRequest.getTable_size();
         Integer capacity = seatingRequest.getCapacity();
         Integer status = seatingRequest.getStatus();
 
-        seating tables = new seating(restaurant_id, table_number, table_size, capacity, status);
-        return seatingRepository.save(tables);
+        Seating seat = new Seating();
+        seat.setRestaurant_id(restaurant_id);
+        seat.setTable_number(table_number);
+        seat.setTable_size(table_size);
+        seat.setCapacity(capacity);
+        seat.setStatus(status);
+        
+        return seatingRepository.save(seat);
     }
 
     @PutMapping(value = "/table/{id}")
-    public ResponseEntity updateTable(@PathVariable(value = "id") Long id, @RequestBody seating updatedSeating) {
-        seating tables = seatingRepository.findById(id).orElse(null);
+    public ResponseEntity updateTable(@PathVariable(value = "id") Long id, @RequestBody Seating updatedSeating) {
+        Seating tables = seatingRepository.findById(id).orElse(null);
         if (tables == null) {
             return ResponseEntity.notFound().build();
         } else {
-            tables.setRestaurantId(updatedSeating.getRestaurantId());
-            tables.setTableNumber(updatedSeating.getTableNumber());
-            tables.setTableSize(updatedSeating.getTableSize());
+            tables.setRestaurant_id(updatedSeating.getRestaurant_id());
+            tables.setTable_number(updatedSeating.getTable_number());
+            tables.setTable_size(updatedSeating.getTable_size());
             tables.setCapacity(updatedSeating.getCapacity());
             tables.setStatus(updatedSeating.getStatus());
             seatingRepository.save(tables);
@@ -56,7 +62,7 @@ public class SeatingController {
 
     @DeleteMapping(value = "/table")
     public ResponseEntity removeTable(@RequestParam(value ="id") Long id) {
-        seating tables = seatingRepository.findById(id).orElse(null);
+        Seating tables = seatingRepository.findById(id).orElse(null);
         if (tables == null) {
             return ResponseEntity.notFound().build();
         } else {

@@ -43,9 +43,9 @@ public class ReservationController {
     @PostMapping("/reservation")
     public Reservation createReservation(@RequestBody Reservation reservationRequest) {
         System.out.println("---- ReservationController::createReservation");
-        Integer customer_id = reservationRequest.getCustomerId();
-        Integer restaurant_id = reservationRequest.getRestaurantId();
-        Integer table_id = reservationRequest.getTableId();
+        Integer customer_id = reservationRequest.getCustomer_id();
+        Integer restaurant_id = reservationRequest.getRestaurant_id();
+        Integer table_id = reservationRequest.getTable_id();
         Integer table_size = reservationRequest.getTableSize();
         String date = reservationRequest.getDate();
         Integer scheduled_time = reservationRequest.getScheduledTime();
