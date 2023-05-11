@@ -43,13 +43,13 @@ public class ReservationController {
     @PostMapping("/reservation")
     public Reservation createReservation(@RequestBody Reservation reservationRequest) {
         System.out.println("---- ReservationController::createReservation");
-        Integer customer_id = reservationRequest.getCustomerId();
-        Integer restaurant_id = reservationRequest.getRestaurantId();
-        Integer table_id = reservationRequest.getTableId();
-        Integer table_size = reservationRequest.getTableSize();
+        Integer customer_id = reservationRequest.getCustomer_id();
+        Integer restaurant_id = reservationRequest.getRestaurant_id();
+        Integer table_id = reservationRequest.getTable_id();
+        Integer table_size = reservationRequest.getTable_size();
         String date = reservationRequest.getDate();
-        Integer scheduled_time = reservationRequest.getScheduledTime();
-        Reservation reservations = new Reservation(customer_id, restaurant_id, table_id, table_size, date, scheduled_time);
+        Integer scheduled_time = reservationRequest.getScheduled_time();
+        Reservation reservations = new Reservation(null, customer_id, restaurant_id, table_id, table_size, date, scheduled_time);
         return reservationRepository.save(reservations);
 //        MailUtil.send(userRepo.findById(Long.valueOf(reservationRequest.getCustomerId())).get().getEmail(),
 //                "Reservation-Create", "You have made a reservation successfully!", false);
@@ -62,12 +62,12 @@ public class ReservationController {
         if (reservations == null) {
             return ResponseEntity.notFound().build();
         } else {
-            reservations.setCustomerId(updatedReservation.getCustomerId());
-            reservations.setRestaurantId(updatedReservation.getRestaurantId());
-            reservations.setTableId(updatedReservation.getTableId());
-            reservations.setTableSize(updatedReservation.getTableSize());
+            reservations.setCustomer_id(updatedReservation.getCustomer_id());
+            reservations.setRestaurant_id(updatedReservation.getRestaurant_id());
+            reservations.setTable_id(updatedReservation.getTable_id());
+            reservations.setTable_size(updatedReservation.getTable_size());
             reservations.setDate(updatedReservation.getDate());
-            reservations.setScheduledTime(updatedReservation.getScheduledTime());
+            reservations.setScheduled_time(updatedReservation.getScheduled_time());
             Reservation result = reservationRepository.save(reservations);
             return ResponseEntity.ok(result);
             // MailUtil.send(userRepo.findById(Long.valueOf(updatedReservation.getCustomerId())).get().getEmail(), 

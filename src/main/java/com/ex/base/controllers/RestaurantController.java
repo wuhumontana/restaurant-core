@@ -58,7 +58,7 @@ public class RestaurantController {
         Integer hours = restaurantRequest.getHours();
         Integer status = restaurantRequest.getStatus();
 
-        Restaurant restaurants = new Restaurant(name, account, password, description,
+        Restaurant restaurants = new Restaurant(null, name, account, password, description,
                                                 mobile, address, tablesAvailable,
                                                 tablesAvailableSZ2, image_url, hours, status);
         return restaurantRepository.save(restaurants);
