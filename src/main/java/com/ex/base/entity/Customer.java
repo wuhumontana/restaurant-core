@@ -7,21 +7,16 @@ import javax.persistence.Id;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 @ApiModel(description = "Customer data model")
 public class Customer {
-    @Id
+    public Customer(String username, String password, String email, String phone) {
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "Customer ID", example = "12312312", required = true) 
     private Long id;

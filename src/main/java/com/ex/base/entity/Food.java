@@ -21,7 +21,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @ApiModel(description = "Food data model")
-public class food {
+public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "Food ID from database", example = "12312312", required = true) 

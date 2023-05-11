@@ -21,7 +21,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-public class seating {
+public class Seating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(notes = "Seating ID", example = "1", required = true)
